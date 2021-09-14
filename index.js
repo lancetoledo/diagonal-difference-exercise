@@ -1,8 +1,8 @@
 // Import stylesheets
-import "./style.css";
+import './style.css';
 
 // Write Javascript code!
-const appDiv = document.getElementById("app");
+const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<h1>JS Starter</h1>`;
 
 let arr = [[1, 2, 3], [4, 5, 6], [9, 8, 9]];
@@ -45,7 +45,7 @@ function diagonalSum(array, direction, i, j) {
   //Set the current value before manipulation
   let current = array[i][j];
   //Conditional for diagonal direction
-  if (direction == "right") {
+  if (direction == 'right') {
     //Recursive statement
     return diagonalSum(array, direction, ++i, ++j) + current;
   } else {
@@ -56,11 +56,27 @@ function diagonalSum(array, direction, i, j) {
 //Function that finds the diagonal difference
 function diagonalDiff(arr) {
   //Get some of both diagonals
-  let leftSum = diagonalSum(arr, "right", 0, 0);
-  let rightSum = diagonalSum(arr, "left", 0, arr.length - 1);
+  let leftSum = diagonalSum(arr, 'right', 0, 0);
+  let rightSum = diagonalSum(arr, 'left', 0, arr.length - 1);
   //Subtract total of sums
   let result = Math.abs(leftSum - rightSum);
   return result;
 }
 
 console.log(diagonalDiff(arr));
+
+function diagonalDifference(arr) {
+  // Write your code here
+  let diag1 = 0;
+  let diag2 = 0;
+  for (let i = 0; i < arr.length; i++) {
+    diag1 += arr[i][i];
+    diag2 += arr[i][arr[i].length - i - 1];
+  }
+
+  let result = Math.abs(diag1 - diag2);
+
+  return result;
+}
+
+console.log(diagonalDifference(arr));
